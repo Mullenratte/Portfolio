@@ -24,12 +24,14 @@
 
   <!-- Put your site title here -->
   <title>
-    Max Blanc | Portfolio 
+    Max Blanc | Portfolio
   </title>
 
-  <meta name="description" content="A creative, enthusiastic developer looking to make his way into the games industry. Passionate for designing innovative gameplay systems and bringing them to life.">
+  <meta name="description"
+    content="A creative, enthusiastic developer looking to make his way into the games industry. Passionate for designing innovative gameplay systems and bringing them to life.">
 
-  <meta name="keywords" content="Max Blanc, Game Development, Unity, Unreal Engine 5, C#, C++, Game Jams, Yew Rune Creations, Viking Chef Feast Frenzy, Programming, Gamedev, Software Engineering " />
+  <meta name="keywords"
+    content="Max Blanc, Game Development, Unity, Unreal Engine 5, C#, C++, Game Jams, Yew Rune Creations, Viking Chef Feast Frenzy, Programming, Gamedev, Software Engineering " />
   <link rel="stylesheet" href="index.css" />
 </head>
 
@@ -58,7 +60,7 @@
         </h1>
         <p>Game Developer & Student of Digital Media</p>
 
-        
+
       </div>
     </div>
   </header>
@@ -72,6 +74,108 @@
         <h2>Projects</h2>
         <div class="work__boxes">
 
+          <h3>GOLEM GAME (WIP)</h3>
+          <p>
+            <i>
+              Disclaimer: Most visual assets seen in the displayed footage (including the environment, sprites and animations) are
+              external assets not created by me. I am using them under their respective license. Further <a href="#GolemGameLicensing">licensing information</a> can
+              be found below.
+            </i>
+          </p>
+          <div class="portfolio-top" data-v-4fee038e="">
+            <div class="content-placeholder" data-v-4fee038e="">
+              <div class="vsc-controller"></div>
+              <video playsinline loop autoplay preload="metadata" data-v-4fee038e="">
+                <source src="/media/golemgame.mp4" type="video/mp4" data-v-4fee038e="">
+                Your browser does not support the video tag or the file format of this video.
+              </video>
+            </div>
+          </div>
+
+
+          <h3>About</h3>
+          <p>
+            Golem Game is set to be an Action-RPG that features mechanics inspired by Noita and Monster Hunter.
+            In its core loop, you explore the world, fight against various monsters and collect their resources to 
+            craft your own unique spells.
+          </p>
+          
+          <h3 style="margin-top: 35px;">Introduction</h3>
+          <p>
+            I started this Unreal Engine 5.5 project in April 2025 and have since been working on it almost every day.
+            My main focus in the beginning was creating the <b>spell system</b> as the foundation of gameplay. This was
+            done mainly in C++. 
+            <br>
+            I then spent some time learning about Unreal's <b>Gameplay Ability System</b> and used it to implement
+            some basic spells and a Dodge ability for the player. 
+            <br>
+            Most recently, I started working on the <b>enemy AI</b>.
+            I setup a basic <b>behavior tree</b> that allows the enemy to follow a path of spline points and recognize the
+            player if they get within a certain sight radius. The enemy will then chase the player and, when in range, opt for one of multiple
+            possible gameplay abilities. The chosen ability is determined by an evaluation of the current siutation based on different heuristics.
+          </p>
+
+          <h3 style="margin-top: 35px;">Spell System</h3>
+
+          <p>
+            I wanted the player to be able to create their own spells and get really creative in the process.
+            The system features <b>Spells</b> and <b>Modifiers</b> and was heavily inspired by Noita.
+            Spells can be cast on their own, but can also be combined with modifiers and other spells to create new, more powerful spells.
+            <!-- Internally, the system works like this:
+
+            // CONTINUE HERE -->
+
+            <p>
+              Say, we have an <i>Arcane Missile</i> <img src="/images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">  
+              and a <i>Fireball</i> <img src="/images/Spell_Fireball.png" alt="" style="height: 2em; vertical-align: middle;"> spell. 
+              Casting Fireball would result in a 3 s cooldown before the Arcane Missile can be cast. 
+              Using the <i>Chain Modifier</i> <img src="/images/ChainMod.png" style="height: 2em; vertical-align: middle;"> however,
+              chains these two spells together into one spell that casts Fireball and Arcane Missile at roughly the same time.
+              <div class="portfolio-top-sm">
+                <div class="content-placeholder" data-v-4fee038e="">
+                  <div class="vsc-controller"></div>
+                  <video playsinline loop autoplay preload="metadata" data-v-4fee038e="">
+                    <source src="/media/chainFireBasic.mp4#t=0.01" type="video/mp4" data-v-4fee038e="">
+                    Your browser does not support the video tag or the file format of this video.
+                  </video>
+                  <p class="video-text" data-v-4fee038e=""> The above example shown in the game. </p>
+                </div>
+              </div>
+            </p>
+          </p>
+
+
+
+          <p id="GolemGameLicensing">
+            <h4>Use of External Assets</h4>
+            <i>
+            The 3D environment as well as the Spell VFX are external assets imported from FAB. I am using them under the Fab Standard License (CC-BY).
+            <br>
+            The Character sprites are used under the Craftpix Freebie Products license.
+            <br>
+            The Enemy mushroom sprites are credited to MonoPixelArt on itch and used under their respective license.
+            </i>
+          </p>
+
+          <div class="work__links">
+            <a href="https://mullenratte.itch.io/racing-toads" target="_blank" class="link__text">
+              Itch.io <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/Mullenratte/JameGam48" title="View Source Code" target="_blank">
+              <img src="./images/github.svg" class="work__code" alt="GitHub">
+            </a>
+          </div>
+        </div>
+        <div class="work__image-box">
+
+          <!-- <div class="work__box">
+            <div class="work__text">
+
+                        
+            </div>
+          </div> -->
+
+
           <div class="work__box">
             <div class="work__text">
               <h3>Racing Toads</h3>
@@ -79,10 +183,12 @@
                 <i>Arcade Endless Runner</i>
               </p>
               <p>
-                You're a frog on a Vespa, trapped in an endless maze of roads. Made in a team of three for Jame Gam #48 in 6 days.
+                You're a frog on a Vespa, trapped in an endless maze of roads. Made in a team of three for Jame Gam #48
+                in 6 days.
               </p>
               <p>
-                I was responsible for implementing the player character, item logic, menus & UI, music & sfx integration, polishing and balancing.
+                I was responsible for implementing the player character, item logic, menus & UI, music & sfx
+                integration, polishing and balancing.
               </p>
 
               <div class="work__links">
@@ -99,7 +205,7 @@
             </div>
           </div>
 
-          <div class="work__box">
+          <!-- <div class="work__box">
             <div class="work__text">
               <h3>Quokk-A-Mole (WIP)</h3>
               <p>
@@ -123,7 +229,7 @@
             <div class="work__image-box">
               <img src="./images/project-1.gif" class="work__image" alt="Project 1" />
             </div>
-          </div>
+          </div> -->
 
           <div class="work__box">
             <div class="work__text">
@@ -147,7 +253,7 @@
             <div class="work__image-box">
               <img src="./images/project-2.png" class="work__image" alt="Project 1" />
             </div>
-          </div>          
+          </div>
         </div>
       </div>
     </section>
@@ -163,28 +269,32 @@
               Hey!
             </p>
             <p>
-              I'm <b>Max Blanc</b>, a creative, enthusiastic game developer looking to make my way into the games industry. 
+              I'm <b>Max Blanc</b>, a creative, enthusiastic game developer looking to make my way into the games
+              industry.
               I'm passionate for designing <b>innovative gameplay systems</b> and bringing them to life.
             </p>
             <p>
               Besides university, I spend my time working both on personal projects and on the Steam game
-              <a href="https://store.steampowered.com/app/2497940/Viking_Chef_Feast_Frenzy/"><b>Viking Chef: Feast Frenzy</b></a> (Yew Rune Creations)
-              to further hone my programming knowledge as well as other game dev related skills, such as pixel art and design principles. 
+              <a href="https://store.steampowered.com/app/2497940/Viking_Chef_Feast_Frenzy/"><b>Viking Chef: Feast
+                  Frenzy</b></a> (Yew Rune Creations)
+              to further hone my programming knowledge as well as other game dev related skills, such as pixel art and
+              design principles.
             </p>
             <p>
-              The remaining time you'll either find me playing games myself, be it on PC or analog (DnD5e), or - when I've sat enough for the day - lifting weights
+              The remaining time you'll either find me playing games myself, be it on PC or analog (DnD5e), or - when
+              I've sat enough for the day - lifting weights
               and doing historical fencing (long sword) at <i>Historisches Schwertfechten Nordhessen</i>.
             </p>
             <p>
-              If you want to see more of my artistic endeavours regarding pixel art, please take a look at 
-              my  <a href="https://www.instagram.com/mullenratte/" target="_blank"><b>Instagram</b></a>.
+              If you want to see more of my artistic endeavours regarding pixel art, please take a look at
+              my <a href="https://www.instagram.com/mullenratte/" target="_blank"><b>Instagram</b></a>.
 
             </p>
           </div>
 
           <div class="about__photo-container">
-             
-            <img class="about__photo" src="images/bewerbungsfoto.jpg" alt="photo"/>
+
+            <img class="about__photo" src="images/bewerbungsfoto.jpg" alt="photo" />
           </div>
         </div>
       </div>
@@ -198,7 +308,8 @@
       <h2>Get in Touch</h2>
       <div class="contact__info">
         <p>
-          Interested in what I do or want to provide feedback to any of my projects? Please feel free to reach out to me via email!
+          Interested in what I do or want to provide feedback to any of my projects? Please feel free to reach out to me
+          via email!
         </p>
         <a href="mailto:max.blanc@web.de" class="btn">max.blanc@web.de</a>
       </div>
@@ -217,7 +328,8 @@
         </li>
         <li class="footer__social-link-item">
           <a href="https://www.linkedin.com/in/max-blanc-615ab9280/" target="_blank">
-            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image"
+              alt="Linkedin">
           </a>
         </li>
       </ul>
@@ -235,7 +347,7 @@
   </footer>
 
   <a href="#top" class="back-to-top" title="Back to Top">
-    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
+    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image" />
   </a>
   <script src="./index.js"></script>
 </body>
