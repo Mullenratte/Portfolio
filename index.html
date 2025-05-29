@@ -61,6 +61,21 @@
         <p>Game Developer & Student of Digital Media</p>
 
 
+        <ul class="footer__social-links" style="justify-content: start;">
+        <li class="footer__social-link-item">
+          <a href="https://github.com/mullenratte/" title="Link to Github Profile" target="_blank">
+            <img src="./images/github.svg" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://www.linkedin.com/in/max-blanc-615ab9280/" target="_blank">
+            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image"
+              alt="Linkedin">
+          </a>
+        </li>
+      </ul>
+
+
       </div>
     </div>
   </header>
@@ -77,8 +92,10 @@
           <h3>GOLEM GAME (WIP)</h3>
           <p>
             <i>
-              Disclaimer: Most visual assets seen in the displayed footage (including the environment, sprites and animations) are
-              external assets not created by me. I am using them under their respective license. Further <a href="#GolemGameLicensing">licensing information</a> can
+              Disclaimer: Most visual assets seen in the displayed footage (including the environment, sprites and
+              animations) are
+              external assets not created by me. I am using them under their respective license. Further <a
+                href="#GolemGameLicensing">licensing information</a> can
               be found below.
             </i>
           </p>
@@ -86,7 +103,7 @@
             <div class="content-placeholder" data-v-4fee038e="">
               <div class="vsc-controller"></div>
               <video playsinline loop autoplay preload="metadata" data-v-4fee038e="">
-                <source src="/media/golemgame.mp4" type="video/mp4" data-v-4fee038e="">
+                <source src="./media/golemgame.mp4" type="video/mp4" data-v-4fee038e="">
                 Your browser does not support the video tag or the file format of this video.
               </video>
             </div>
@@ -96,23 +113,27 @@
           <h3>About</h3>
           <p>
             Golem Game is set to be an Action-RPG that features mechanics inspired by Noita and Monster Hunter.
-            In its core loop, you explore the world, fight against various monsters and collect their resources to 
+            In its core loop, you explore the world, fight against various monsters and collect their resources to
             craft your own unique spells.
           </p>
-          
+
           <h3 style="margin-top: 35px;">Introduction</h3>
           <p>
             I started this Unreal Engine 5.5 project in April 2025 and have since been working on it almost every day.
             My main focus in the beginning was creating the <b>spell system</b> as the foundation of gameplay. This was
-            done mainly in C++. 
+            done mainly in C++.
             <br>
             I then spent some time learning about Unreal's <b>Gameplay Ability System</b> and used it to implement
-            some basic spells and a Dodge ability for the player. 
+            some basic spells and a Dodge ability for the player.
             <br>
             Most recently, I started working on the <b>enemy AI</b>.
-            I setup a basic <b>behavior tree</b> that allows the enemy to follow a path of spline points and recognize the
-            player if they get within a certain sight radius. The enemy will then chase the player and, when in range, opt for one of multiple
-            possible gameplay abilities. The chosen ability is determined by an evaluation of the current siutation based on different heuristics.
+            I setup a basic <b>behavior tree</b> that allows the enemy to follow a path of spline points and recognize
+            the
+            player if they get within a certain sight radius. The enemy will then chase the player and, when in range,
+            opt for one of multiple
+            possible gameplay abilities. The chosen ability is determined by an evaluation of the current situation
+            based on different heuristics,
+            e.g. the distance from the target.
           </p>
 
           <h3 style="margin-top: 35px;">Spell System</h3>
@@ -120,142 +141,247 @@
           <p>
             I wanted the player to be able to create their own spells and get really creative in the process.
             The system features <b>Spells</b> and <b>Modifiers</b> and was heavily inspired by Noita.
-            Spells can be cast on their own, but can also be combined with modifiers and other spells to create new, more powerful spells.
-            <!-- Internally, the system works like this:
+            Spells can be cast on their own, but can also be combined with modifiers and other spells to create new,
+            more powerful spells.
+            <br>
+            A modifier usually only applies to the next entry in the component list. Putting the <i>Duplicate
+              Modifier</i> <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            before an Arcane Missile for example, results in a Spell that casts 2 Arcane Missiles. Doing the same, but
+            adding another Arcane Missile at the end like this
+            <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">
+            results in a spell that casts 3 Arcane Missiles, because the Duplicate Modifier only applies to the first
+            Arcane Missile.
+            <br> <br>
+            Now, what happens when we do this:
+            <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">
+            ?
 
-            // CONTINUE HERE -->
+            We get 4 Arcane Missiles.
+            <br>
+            So this
+            <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/duplicate.png" style="height: 2em; vertical-align: middle;">
+            <img src="./images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">
+            leads to a spell that casts 8 Arcane Missiles!
 
-            <p>
-              Say, we have an <i>Arcane Missile</i> <img src="/images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">  
-              and a <i>Fireball</i> <img src="/images/Spell_Fireball.png" alt="" style="height: 2em; vertical-align: middle;"> spell. 
-              Casting Fireball would result in a 3 s cooldown before the Arcane Missile can be cast. 
-              Using the <i>Chain Modifier</i> <img src="/images/ChainMod.png" style="height: 2em; vertical-align: middle;"> however,
-              chains these two spells together into one spell that casts Fireball and Arcane Missile at roughly the same time.
-              <div class="portfolio-top-sm">
-                <div class="content-placeholder" data-v-4fee038e="">
-                  <div class="vsc-controller"></div>
-                  <video playsinline loop autoplay preload="metadata" data-v-4fee038e="">
-                    <source src="/media/chainFireBasic.mp4#t=0.01" type="video/mp4" data-v-4fee038e="">
-                    Your browser does not support the video tag or the file format of this video.
-                  </video>
-                  <p class="video-text" data-v-4fee038e=""> The above example shown in the game. </p>
-                </div>
-              </div>
-            </p>
+          <div class="portfolio-top-sm">
+            <div class="content-placeholder" data-v-4fee038e="">
+              <div class="vsc-controller"></div>
+              <video playsinline loop autoplay preload="metadata" data-v-4fee038e="">
+                <source src="./media/8xSpell.mp4#t=0.01" type="video/mp4" data-v-4fee038e="">
+                Your browser does not support the video tag or the file format of this video.
+              </video>
+              <p class="video-text" data-v-4fee038e=""> Utilizing the Duplicate Modifier to create an octuple spell.</p>
+            </div>
+          </div>
+          <br>
+          We can see that these modifiers seem to stack, but how does it work internally?
+          
+          <br>
+          Any spell the player can cast is a <b style="color:#38b6a1">UCastableSpell</b>. When combining spells and
+          modifiers in the spell crafting menu, the system internally
+          calls the static <i style="color:#dcdca9">CreateCastableSpell</i> function of the <b
+            style="color:#38b6a1">UCastableSpellFactory</b> class.
+          This basically takes a TArray of the components as parameter. It then iterates through the array in <i>reverse order</i>
+          and saves all modifiers in a TArray. 
+          <p>
+            <i>
+              Note: This is important, since modifiers always affect subsequent entries.
+            These entries can not be Modifiers themselves, which is why they need to be applied in reverse order.      
+            </i>    
+          </p>
+          The modifiers are then applied. Generally speaking, modifiers always do the following:
+          <p>
+            <ol>
+              <li>Create a new empty <b style="color:#38b6a1">USpellComposition</b></li>
+              <li>Initialize the spell composition with all spells (or spell compositions!) the modifier affects</li>
+              <li>Apply the actual modifier effect to the spell composition</li>
+              <li>Update the Factory's Components list by replacing itself and all modified components with the new <b>Spell Composition</b></li>
+            </ol>
+          </p>
+
+          Example: <br>
+          We have an <i>Arcane Missile</i> <img src="./images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">
+          and a <i>Fireball</i> <img src="./images/Spell_Fireball.png" alt="" style="height: 2em; vertical-align: middle;"> spell.
+          The <i>Chain Modifier</i> <img src="./images/ChainMod.png" style="height: 2em; vertical-align: middle;"> chains these two spells
+          together into one spell that casts Fireball and Arcane Missile at roughly the same time.
+
+          <img src="./images/Spell,Modifier,CastableSpell.png" alt="">
+          <p class="video-text" data-v-4fee038e=""> The spell components' corresponding Unreal C++ base classes.</p>
+
+          Internally, it would roughly work like this:
+          <p>
+            <ol>
+              <li>
+                <b>Extract Modifiers</b>
+                <br> 
+
+                <i>Component List</i>
+                <img src="./images/ChainMod.png" style="height: 2em; vertical-align: middle;">
+                <img src="./images/Spell_Basic.png" style="height: 2em; vertical-align: middle;">
+                <img src="./images/Spell_Fireball.png" style="height: 2em; vertical-align: middle;">
+              </li>
+              Does not remove modifiers from the component list!
+              <br> <br>
+              <li>
+                <b>Apply Modifiers</b>
+                <br>
+                -> Calls <b style="color:#38b6a1">USpellModifier_Chain</b>::<i style="color:#dcdca9">Apply</i> :
+                <br>
+                Creates a spell composition <img src="./images/SpellComp.png" style="height: 2em; vertical-align: middle;"> 
+                consisting of Fireball & Arcane Missile. This is the modifier's unique effect. The Duplicate Modifier, for example,
+                would instead create a spell composition that only consists of the Arcane Missile spell and then increase its CastAmount
+                to 2.
+                <br>
+                then removes itself and the affected spells from the component list and
+                puts the new spell composition into the list
+                <br> <br>
+                <i>Component List</i>
+                <img src="./images/SpellComp.png" style="height: 2em; vertical-align: middle;">           
+              </li>
+              <br>
+              <li>
+                Create a <b style="color:#38b6a1">UCastableSpell</b><img src="./images/CastableSpell.png" style="height: 2em; vertical-align: middle;">           
+                from the component list and return it.
+              </li>
+            </ol>
+          </p>     
+
+          This Castable Spell can then be assigned to one of the player character's wand slots and is ready to be used in combat!
+          </p>
+
+          <h3>Improvements & Conclusion</h3>
+          The system is by no means implemented in a perfectly clean manner. For example, the system currently expects each Modifier
+          class to directly access and modify the factory's components list. I am aware this is prone to error and potentially tedious
+          to debug. Having the <i style="color:#dcdca9">Apply</i> function return the spell composition and the indices to remove as 
+          out parameters would be one way to achieve a cleaner solution. Also, since all Modifiers share a lot of the same logic, it's 
+          worth to think about introducing a common base class instead of an interface. <br>
+          As for right now, the system is working as intended and suffices for the current stage the game is in.
+          I will definitely give it an overhaul with the mentioned improvements though, once I find the time.
+          <br>
+          Nonetheless, although the system is still a bit rough around the edges, I am <b>very pleased</b> with the outcome and the things
+          I learned during the implementation. It's the foundation for a potentially extremely enjoyable Magic System that enables creative and
+          exploratory urges in players.
+          <br><br>
+          Thank you for reading through all of this, I hope this was insightful!
+
+          <p class="source-files">
+            <a href="./files/CastableSpellFactory.h" target="_blank">UCastableSpellFactory.h</a>
+            <br>
+            <a href="./files/CastableSpellFactory.cpp" target="_blank">UCastableSpellFactory.cpp</a>
           </p>
 
 
-
           <p id="GolemGameLicensing">
-            <h4>Use of External Assets</h4>
-            <i>
-            The 3D environment as well as the Spell VFX are external assets imported from FAB. I am using them under the Fab Standard License (CC-BY).
+          <h4>Use of External Assets</h4>
+          <i>
+            The 3D environment as well as the Spell VFX are external assets imported from FAB. I am using them under the
+            Fab Standard License (CC-BY).
             <br>
             The Character sprites are used under the Craftpix Freebie Products license.
             <br>
             The Enemy mushroom sprites are credited to MonoPixelArt on itch and used under their respective license.
-            </i>
+          </i>
           </p>
-
-          <div class="work__links">
-            <a href="https://mullenratte.itch.io/racing-toads" target="_blank" class="link__text">
-              Itch.io <span>&rarr;</span>
-            </a>
-            <a href="https://github.com/Mullenratte/JameGam48" title="View Source Code" target="_blank">
-              <img src="./images/github.svg" class="work__code" alt="GitHub">
-            </a>
-          </div>
         </div>
-        <div class="work__image-box">
 
-          <!-- <div class="work__box">
-            <div class="work__text">
+        <br> <br>
 
-                        
-            </div>
-          </div> -->
-
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Racing Toads</h3>
-              <p>
-                <i>Arcade Endless Runner</i>
-              </p>
-              <p>
-                You're a frog on a Vespa, trapped in an endless maze of roads. Made in a team of three for Jame Gam #48
-                in 6 days.
-              </p>
-              <p>
-                I was responsible for implementing the player character, item logic, menus & UI, music & sfx
-                integration, polishing and balancing.
-              </p>
-
-              <div class="work__links">
-                <a href="https://mullenratte.itch.io/racing-toads" target="_blank" class="link__text">
-                  Itch.io <span>&rarr;</span>
-                </a>
-                <a href="https://github.com/Mullenratte/JameGam48" title="View Source Code" target="_blank">
-                  <img src="./images/github.svg" class="work__code" alt="GitHub">
-                </a>
+        <button type="button" class="collapsible">Game Jam Projects</button>
+        <div class="content" style="margin-top: 25px;">
+          <div class="work__image-box">
+        
+        
+        
+            <div class="work__box">
+              <div class="work__text">
+                <h3>Racing Toads</h3>
+                <p>
+                  <i>Arcade Endless Runner</i>
+                </p>
+                <p>
+                  You're a frog on a Vespa, trapped in an endless maze of roads. Made in a team of three for Jame Gam #48
+                  in 6 days.
+                </p>
+                <p>
+                  I was responsible for implementing the player character, item logic, menus & UI, music & sfx
+                  integration, polishing and balancing.
+                </p>
+        
+                <div class="work__links">
+                  <a href="https://mullenratte.itch.io/racing-toads" target="_blank" class="link__text">
+                    Itch.io <span>&rarr;</span>
+                  </a>
+                  <a href="https://github.com/Mullenratte/JameGam48" title="View Source Code" target="_blank">
+                    <img src="./images/github.svg" class="work__code" alt="GitHub">
+                  </a>
+                </div>
+              </div>
+              <div class="work__image-box">
+                <img src="./images/project-3.gif" class="work__image" alt="Project 3" />
               </div>
             </div>
-            <div class="work__image-box">
-              <img src="./images/project-3.gif" class="work__image" alt="Project 3" />
-            </div>
-          </div>
-
-          <!-- <div class="work__box">
-            <div class="work__text">
-              <h3>Quokk-A-Mole (WIP)</h3>
-              <p>
-                <i>Shooter & Endless Runner with unique twist</i>
-              </p>
-              <p>
-                Quokk, a cheeky little rodent agent, and his mole friend are trying to infiltrate the Hornet's Nest, a notorious bandit outpost in the Dark Forest.
-                Fight your way through, but be careful. Your actions might be your own demise!
-              </p>
-              <p>
-                Defeated enemies are disintegrated and their power is fed to the mole, which in turn gets stronger and faster. Watch out for any eggs dug up by his 
-                unsatiable hunger!
-              </p>
-
-              <div class="work__links">
-                <a href="https://github.com/Mullenratte/ElinJam-1" title="View Source Code" target="_blank">
-                  <img src="./images/github.svg" class="work__code" alt="GitHub">
-                </a>
+        
+            <div class="work__box">
+              <div class="work__text">
+                <h3>Quokk-A-Mole (WIP)</h3>
+                <p>
+                  <i>Shooter & Endless Runner with unique twist</i>
+                </p>
+                <p>
+                  Quokk, a cheeky little rodent agent, and his mole friend are trying to infiltrate the Hornet's Nest, a notorious
+                  bandit outpost in the Dark Forest.
+                  Fight your way through, but be careful. Your actions might be your own demise!
+                </p>
+                <p>
+                  Defeated enemies are disintegrated and their power is fed to the mole, which in turn gets stronger and faster.
+                  Watch out for any eggs dug up by his
+                  unsatiable hunger!
+                </p>
+            
+                <div class="work__links">
+                  <a href="https://github.com/Mullenratte/ElinJam-1" title="View Source Code" target="_blank">
+                    <img src="./images/github.svg" class="work__code" alt="GitHub">
+                  </a>
+                </div>
+              </div>
+              <div class="work__image-box">
+                <img src="./images/project-1.gif" class="work__image" alt="Project 1" />
               </div>
             </div>
-            <div class="work__image-box">
-              <img src="./images/project-1.gif" class="work__image" alt="Project 1" />
-            </div>
-          </div> -->
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Rigor Mortis</h3>
-              <p>
-                <i>Puzzle Platformer made in 48 h</i>
-              </p>
-              <p>
-                Use defeated enemies' corpses to build yourself a way out of a deep well.
-              </p>
-
-              <div class="work__links">
-                <a href="https://mullenratte.itch.io/rigor-mortis" target="_blank" class="link__text">
-                  Itch.io <span>&rarr;</span>
-                </a>
-                <a href="https://github.com/Mullenratte/PJPGJ2024" target="_blank">
-                  <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub">
-                </a>
+        
+            <div class="work__box">
+              <div class="work__text">
+                <h3>Rigor Mortis</h3>
+                <p>
+                  <i>Puzzle Platformer made in 48 h</i>
+                </p>
+                <p>
+                  Use defeated enemies' corpses to build yourself a way out of a deep well.
+                </p>
+        
+                <div class="work__links">
+                  <a href="https://mullenratte.itch.io/rigor-mortis" target="_blank" class="link__text">
+                    Itch.io <span>&rarr;</span>
+                  </a>
+                  <a href="https://github.com/Mullenratte/PJPGJ2024" target="_blank">
+                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub">
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="work__image-box">
-              <img src="./images/project-2.png" class="work__image" alt="Project 1" />
+              <div class="work__image-box">
+                <img src="./images/project-2.png" class="work__image" alt="Project 1" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        
+        </div>
     </section>
 
     <!-- ***** About ***** -->
@@ -269,26 +395,17 @@
               Hey!
             </p>
             <p>
-              I'm <b>Max Blanc</b>, a creative, enthusiastic game developer looking to make my way into the games
+              I'm <b>Max Blanc</b>, an enthusiastic game developer looking to make my way into the games
               industry.
-              I'm passionate for designing <b>innovative gameplay systems</b> and bringing them to life.
+              I'm passionate for conceptualizing <b>innovative gameplay systems</b> and bringing them to life.
             </p>
             <p>
-              Besides university, I spend my time working both on personal projects and on the Steam game
-              <a href="https://store.steampowered.com/app/2497940/Viking_Chef_Feast_Frenzy/"><b>Viking Chef: Feast
-                  Frenzy</b></a> (Yew Rune Creations)
-              to further hone my programming knowledge as well as other game dev related skills, such as pixel art and
-              design principles.
+              Besides university, I spend my time working on personal projects to further hone my programming knowledge as well as 
+              other game dev related skills.
             </p>
             <p>
-              The remaining time you'll either find me playing games myself, be it on PC or analog (DnD5e), or - when
-              I've sat enough for the day - lifting weights
-              and doing historical fencing (long sword) at <i>Historisches Schwertfechten Nordhessen</i>.
-            </p>
-            <p>
-              If you want to see more of my artistic endeavours regarding pixel art, please take a look at
-              my <a href="https://www.instagram.com/mullenratte/" target="_blank"><b>Instagram</b></a>.
-
+              The remaining time you'll either find me playing games, be it on PC or analogue (DnD5e), or - when
+              I've sat enough for the day - lifting weights in the local gym or doing historical fencing (long sword) at <i>Historisches Schwertfechten Nordhessen</i>.
             </p>
           </div>
 
@@ -350,6 +467,9 @@
     <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image" />
   </a>
   <script src="./index.js"></script>
+
+
+
 </body>
 
 </html>
