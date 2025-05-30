@@ -691,3 +691,7 @@ video {
   display: none;
   overflow: hidden;
 }
+
+ul.head-list {
+    list-style-type: none;
+}
